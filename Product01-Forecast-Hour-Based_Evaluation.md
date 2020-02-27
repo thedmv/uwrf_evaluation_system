@@ -27,11 +27,11 @@ In this document I will explore how to create the first part of the evaluation s
 ```{r Initialization}
 rm(list = ls())
 # Libraries to be used are loaded.
-source("../../SummerCampaign2017/call_libraries.R")
+source("./call_libraries.R")
 # Functions to use 
-source("../../SummerCampaign2017/ccnymwr_functions.R")
-source("../../WindLidar_CCNY/ccny_windlidar_functions.R")
-source("../../SummerCampaign2017/wrf_functions.R")
+source("./ccnymwr_functions.R")
+source("./ccny_windlidar_functions.R")
+source("./SummerCampaign2017/wrf_functions.R")
 
 # Functions for Evaluation System
 source("./evalsys_functions.R")
