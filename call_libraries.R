@@ -16,6 +16,9 @@ suppressPackageStartupMessages(library(OceanView)) # for quiver2D
 # suppressPackageStartupMessages(library(Metrics)) # for rmse
 suppressPackageStartupMessages(library(hydroGOF)) # for rmse
 suppressPackageStartupMessages(library(directlabels)) # for labels on RMSE ggplots
+suppressPackageStartupMessages(library(lubridate)) # for easier handling of date-times
+suppressPackageStartupMessages(library(reticulate)) # for python
+
 
 # Function for wind direction calculation
 wd_dif = function(sim, obs) {
