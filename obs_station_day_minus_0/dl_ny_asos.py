@@ -77,8 +77,8 @@ def get_stations_from_networks():
 def main():
     """Our main method"""
     # timestamps in UTC to request data for
-    startts = datetime.datetime(2020, 1, 1)
-    endts = datetime.datetime(2020, 1, 3)
+    startts = datetime.datetime(YEARSTART, MONSTART, DAYSTART)
+    endts = datetime.datetime(YEAREND, MONEND, DAYEND)
 
     service = SERVICE + "data=all&tz=Etc/UTC&format=comma&latlon=yes&"
 
