@@ -1,0 +1,6 @@
+s;YEARSTART;"`date -d "{full_doi} - 1 day" '+%Y'`";
+s;MONSTART;"`date -d "${full_doi} - 1 day" '+%m'`";
+s;DAYSTART;"`date -d "${full_doi} - 1 day" '+%d'`";
+s;YEAREND;"`date -d "${full_doi} + 1 day" '+%Y'`";
+s;MONEND;"`date -d "${full_doi} + 1 day" '+%m'`";
+s;DAYEND;"`date -d "${full_doi} + 1 day" '+%d'`";
