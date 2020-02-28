@@ -46,7 +46,8 @@ For this evaluation system we need to look at three different output folders. He
 
 ```{r Read WRF Data}
 # Set the forecast start times for each time-series output
-fcst_start0 = "2020-01-02 00:00:00"
+#fcst_start0 = "2020-01-02 00:00:00"
+fcst_start0 = "CHANGE_DATE_HERE"
 fcst_start1 = as.character(ymd_hms(fcst_start0) - days(1))
 fcst_start2 = as.character(ymd_hms(fcst_start0) - days(2))
 
