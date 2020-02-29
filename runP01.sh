@@ -6,7 +6,7 @@ export HOME=/home/dmelecio
 export HOMEEVAL=/home/dmelecio/Evaluation_System/uwrf_evaluation_system
 export ASOS=/home/dmelecio/Evaluation_System/uwrf_evaluation_system/obs_station_day_minus_0
 export SCRIPTS=/home/dmelecio/Evaluation_System/uwrf_evaluation_system/scripts
-source ${HOMEEVAL}/.bashrc
+source ${HOME}/.bashrc
 
 #######################################################
 # Time and date variables
@@ -33,7 +33,14 @@ cd ${HOMEEVAL}
 
 # Changes in the dl_ny_asos.py script
 rm cuerg_asos.py
-sed -f sedcommands_dl_ny_asos ${ASOS}/dl_ny_asos.py > ./cuerg_asos.py
+sed -e '{
+       s;YEARSTART;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 1 day" '+%Y'`';
+       s;MONSTART;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 1 day" '+%m'`';
+       s;DAYSTART;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 1 day" '+%d'`';
+       s;YEAREND;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} + 1 day" '+%Y'`';
+       s;MONEND;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} + 1 day" '+%m'`';
+       s;DAYEND;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} + 1 day" '+%d'`';
+       }'  ${ASOS}/dl_ny_asos.py > ./cuerg_asos.py
 
 # Changes in Product01 file
 rm ${HOMEEVAL}/cuerg_P01.Rmd
