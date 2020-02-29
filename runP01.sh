@@ -87,3 +87,9 @@ wrfd2_doiY="`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 2 day" '+%Y'`"
 wrfd2_doim="`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 2 day" '+%m'`"
 wrfd2_doid="`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 2 day" '+%d'`"
 ln -sf ${WRFTSDIR}/${wrfd2_doiY}/${wrfd2_doim}/${wrfd2_doid}/*.d03.TS ${WRFD2}/.
+
+#########################################################
+# Product 01
+#########################################################
+
+$RR -e "rmarkdown::render('cuerg_P01.Rmd')"
