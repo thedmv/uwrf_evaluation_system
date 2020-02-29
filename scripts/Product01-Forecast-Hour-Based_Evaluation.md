@@ -27,14 +27,14 @@ In this document I will explore how to create the first part of the evaluation s
 ```{r Initialization}
 rm(list = ls())
 # Libraries to be used are loaded.
-source("./call_libraries.R")
+source("./scripts/call_libraries.R")
 # Functions to use 
-source("./ccnymwr_functions.R")
-source("./ccny_windlidar_functions.R")
-source("./wrf_functions.R")
+source("./scripts/ccnymwr_functions.R")
+source("./scripts/ccny_windlidar_functions.R")
+source("./scripts/wrf_functions.R")
 
 # Functions for Evaluation System
-source("./evalsys_functions.R")
+source("./scripts/evalsys_functions.R")
 ```
 
 
