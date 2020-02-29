@@ -5,6 +5,9 @@
 export HOME=/home/dmelecio
 export HOMEEVAL=${HOME}/Evaluation_System/uwrf_evaluation_system
 export ASOS=${HOMEEVAL}/obs_station_day_minus_0
+export WRFD0=${HOMEEVAL}/forecast_day_minus_0_cuerg
+export WRFD1=${HOMEEVAL}/forecast_day_minus_1_cuerg
+export WRFD2=${HOMEEVAL}/forecast_day_minus_2_cuerg
 export SCRIPTS=${HOMEEVAL}/scripts
 export PYTHON=${HOME}/miniconda2/bin/python
 source ${HOME}/.bashrc
