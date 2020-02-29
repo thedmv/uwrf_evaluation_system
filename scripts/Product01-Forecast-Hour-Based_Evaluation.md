@@ -31,7 +31,7 @@ source("./call_libraries.R")
 # Functions to use 
 source("./ccnymwr_functions.R")
 source("./ccny_windlidar_functions.R")
-source("./SummerCampaign2017/wrf_functions.R")
+source("./wrf_functions.R")
 
 # Functions for Evaluation System
 source("./evalsys_functions.R")
