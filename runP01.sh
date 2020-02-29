@@ -10,6 +10,7 @@ export WRFD1=${HOMEEVAL}/forecast_day_minus_1_cuerg
 export WRFD2=${HOMEEVAL}/forecast_day_minus_2_cuerg
 export SCRIPTS=${HOMEEVAL}/scripts
 export PYTHON=${HOME}/miniconda2/bin/python
+export RR=/usr/bin/Rscript
 export WRFTSDIR=/data/CUERG_PROJECTS/New_York_Forecast/output_prev
 source ${HOME}/.bashrc
 
