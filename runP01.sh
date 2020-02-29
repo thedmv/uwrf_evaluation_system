@@ -10,6 +10,7 @@ export WRFD1=${HOMEEVAL}/forecast_day_minus_1_cuerg
 export WRFD2=${HOMEEVAL}/forecast_day_minus_2_cuerg
 export SCRIPTS=${HOMEEVAL}/scripts
 export PYTHON=${HOME}/miniconda2/bin/python
+export WRFTSDIR=/data/CUERG_PROJECTS/New_York_Forecast/output_prev
 source ${HOME}/.bashrc
 
 # Clean up previous ASOS files
@@ -71,3 +72,18 @@ mv *.txt ${ASOS}/.
 ########################################################
 # Get WRF Data
 ########################################################
+
+# WRF data for the forecast initialized the same day as the date of interest
+ln -sf ${WRFTSDIR}/${yyyy_doi}/${mm_doi}/${dd_doi}/*.d03.TS ${WRFD0}/.
+
+# WRF data for the forecast initialized the day before the date of interest
+wrfd1_doiY="`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 1 day" '+%Y'`"
+wrfd1_doim="`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 1 day" '+%m'`"
+wrfd1_doid="`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 1 day" '+%d'`"
+ln -sf ${WRFTSDIR}/${wrfd1_doiY}/${wrfd1_doim}/${wrfd1_doid}/*.d03.TS ${WRFD1}/.
+
+# WRF data for the forecast initialized two days before the date of interest
+wrfd2_doiY="`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 2 day" '+%Y'`"
+wrfd2_doim="`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 2 day" '+%m'`"
+wrfd2_doid="`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 2 day" '+%d'`"
+ln -sf ${WRFTSDIR}/${wrfd2_doiY}/${wrfd2_doim}/${wrfd2_doid}/*.d03.TS ${WRFD2}/.
