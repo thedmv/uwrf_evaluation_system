@@ -44,4 +44,6 @@ sed -e '{
 
 # Changes in Product01 file
 rm ${HOMEEVAL}/cuerg_P01.Rmd
-sed 's;CHANGE_DATE_HERE;"${full_doi}";' ${SCRIPTS}/Product01-Forecast-Hour-Based_Evaluation.md > ./cuerg_P01.Rmd
+sed -e "{
+       s;CHANGE_DATE_HERE;${full_doi};
+       }" ${SCRIPTS}/Product01-Forecast-Hour-Based_Evaluation.md > ./cuerg_P01.Rmd
