@@ -3,10 +3,16 @@
 # Script to run the Forecast Evaluation System Products.
 # EDIT THE PATH BELOW:
 export HOME=/home/dmelecio
-export HOMEEVAL=/home/dmelecio/Evaluation_System/uwrf_evaluation_system
-export ASOS=/home/dmelecio/Evaluation_System/uwrf_evaluation_system/obs_station_day_minus_0
-export SCRIPTS=/home/dmelecio/Evaluation_System/uwrf_evaluation_system/scripts
+export HOMEEVAL=${HOME}/Evaluation_System/uwrf_evaluation_system
+export ASOS=${HOMEEVAL}/obs_station_day_minus_0
+export SCRIPTS=${HOMEEVAL}/scripts
+export PYTHON=${HOME}/miniconda2/bin/python
 source ${HOME}/.bashrc
+
+# Clean up previous ASOS files
+rm JFK*.txt
+rm LGA*.txt
+rm NYC*.txt
 
 #######################################################
 # Time and date variables
@@ -43,7 +49,22 @@ sed -e '{
        }'  ${ASOS}/dl_ny_asos.py > ./cuerg_asos.py
 
 # Changes in Product01 file
-rm ${HOMEEVAL}/cuerg_P01.Rmd
+rm cuerg_P01.Rmd
 sed -e "{
        s;CHANGE_DATE_HERE;${full_doi};
        }" ${SCRIPTS}/Product01-Forecast-Hour-Based_Evaluation.md > ./cuerg_P01.Rmd
+
+########################################################
+# Download the ASOS data
+########################################################
+
+# Run the python script for downloading ASOS data
+rm mystations
+ln -sf $ASOS/mystations .
+$PYTHON cuerg_asos.py
+
+# The ASOS data file names all have a .txt suffix
+mv *.txt ${ASOS}/.
+########################################################
+# Get WRF Data
+########################################################
