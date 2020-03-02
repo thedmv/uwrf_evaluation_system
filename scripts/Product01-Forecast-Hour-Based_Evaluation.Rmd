@@ -370,6 +370,9 @@ For the temperature data I will use Bias, RMSE and MAE for the comparison statis
 eeval_temp = evalsys_temp(jfk_temp)
 eeval_wspd = evalsys_wspd(jfk_wspd)
 eeval_wdir = evalsys_wdir(jfk_wdir)
+write.table(eeval_temp, "./jfk_temp_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wspd, "./jfk_wspd_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wdir, "./jfk_wdir_evaltimeseries.csv", row.names = FALSE, sep = ",")
 ```
 
 ```{r Temp Eval Table jfk, results='asis', echo = FALSE}
@@ -395,6 +398,9 @@ stargazer::stargazer(eeval_wdir$eeval_table, type = 'html', summary = FALSE, col
 eeval_temp = evalsys_temp(lga_temp)
 eeval_wspd = evalsys_wspd(lga_wspd)
 eeval_wdir = evalsys_wdir(lga_wdir)
+write.table(eeval_temp, "./lga_temp_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wspd, "./lga_wspd_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wdir, "./lga_wdir_evaltimeseries.csv", row.names = FALSE, sep = ",")
 ```
 
 ```{r Temp Eval Table lga, results='asis', echo = FALSE}
@@ -419,6 +425,9 @@ stargazer::stargazer(eeval_wdir$eeval_table, type = 'html', summary = FALSE, col
 eeval_temp = evalsys_temp(nyc_temp)
 eeval_wspd = evalsys_wspd(nyc_wspd)
 eeval_wdir = evalsys_wdir(nyc_wdir)
+write.table(eeval_temp, "./nyc_temp_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wspd, "./nyc_wspd_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wdir, "./nyc_wdir_evaltimeseries.csv", row.names = FALSE, sep = ",")
 ```
 
 ```{r Temp Eval Table nyc, results='asis', echo = FALSE}

@@ -370,6 +370,12 @@ For the temperature data I will use Bias, RMSE and MAE for the comparison statis
 eeval_temp = evalsys_temp(jfk_temp)
 eeval_wspd = evalsys_wspd(jfk_wspd)
 eeval_wdir = evalsys_wdir(jfk_wdir)
+write.table(eeval_temp$eeval_df, "./jfk_temp_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wspd$eeval_df, "./jfk_wspd_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wdir$eeval_df, "./jfk_wdir_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_temp$eeval_table, "./jfk_temp_evaltable.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wspd$eeval_table, "./jfk_wspd_evaltable.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wdir$eeval_table, "./jfk_wdir_evaltable.csv", row.names = FALSE, sep = ",")
 ```
 
 ```{r Temp Eval Table jfk, results='asis', echo = FALSE}
@@ -395,6 +401,13 @@ stargazer::stargazer(eeval_wdir$eeval_table, type = 'html', summary = FALSE, col
 eeval_temp = evalsys_temp(lga_temp)
 eeval_wspd = evalsys_wspd(lga_wspd)
 eeval_wdir = evalsys_wdir(lga_wdir)
+write.table(eeval_temp$eeval_df, "./lga_temp_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wspd$eeval_df, "./lga_wspd_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wdir$eeval_df, "./lga_wdir_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_temp$eeval_table, "./lga_temp_evaltable.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wspd$eeval_table, "./lga_wspd_evaltable.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wdir$eeval_table, "./lga_wdir_evaltable.csv", row.names = FALSE, sep = ",")
+
 ```
 
 ```{r Temp Eval Table lga, results='asis', echo = FALSE}
@@ -419,6 +432,12 @@ stargazer::stargazer(eeval_wdir$eeval_table, type = 'html', summary = FALSE, col
 eeval_temp = evalsys_temp(nyc_temp)
 eeval_wspd = evalsys_wspd(nyc_wspd)
 eeval_wdir = evalsys_wdir(nyc_wdir)
+write.table(eeval_temp$eeval_df, "./nyc_temp_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wspd$eeval_df, "./nyc_wspd_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wdir$eeval_df, "./nyc_wdir_evaltimeseries.csv", row.names = FALSE, sep = ",")
+write.table(eeval_temp$eeval_table, "./nyc_temp_evaltable.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wspd$eeval_table, "./nyc_wspd_evaltable.csv", row.names = FALSE, sep = ",")
+write.table(eeval_wdir$eeval_table, "./nyc_wdir_evaltable.csv", row.names = FALSE, sep = ",")
 ```
 
 ```{r Temp Eval Table nyc, results='asis', echo = FALSE}
