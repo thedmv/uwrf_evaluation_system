@@ -15,9 +15,9 @@ export WRFTSDIR=/data/CUERG_PROJECTS/New_York_Forecast/output_prev
 source ${HOME}/.bashrc
 
 # Clean up previous ASOS files
-rm JFK*.txt
-rm LGA*.txt
-rm NYC*.txt
+rm ${ASOS}/JFK*.txt
+rm ${ASOS}/LGA*.txt
+rm ${ASOS}/NYC*.txt
 
 #######################################################
 # Time and date variables
