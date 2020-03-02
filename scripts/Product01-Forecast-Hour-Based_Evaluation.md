@@ -135,7 +135,13 @@ head(wrfd2.df)
 # Observations from ASOS
 head(asos.df)
 ```
+## Locations for Plots
 
+```{r Plot Image Locations}
+# Save the output plots
+knitr::opts_chunk$set(fig.path = paste0("./", fcst_start0 %>% str_replace(" 00:00:00", "")) , dev = "png")
+
+```
 
 # Match Times for Model and Observations  
 
@@ -448,7 +454,7 @@ ggplot(ggtemp, aes(x = Date.Time, y = Temperature, color = Source)) +
   
 ## Wind Speed  
 
-```{r All GG Wind Speeds, echo = FALSE, fig.align = "center"}
+```{r All_Locations_Wind_Speeds.png, echo = FALSE, fig.align = "center"}
 jfk_wspd$Location = "JFK"
 lga_wspd$Location = "LGA"
 nyc_wspd$Location = "NYC"
@@ -462,7 +468,7 @@ ggplot(ggwspd, aes(x = Date.Time, y = Wind.Speed, color = Source)) +
   
 ## Wind Direction  
 
-```{r All GG Wind Direction, echo = FALSE, fig.align = "center"}
+```{r All_Locations_Wind_Direction, echo = FALSE, fig.align = "center"}
 jfk_wdir$Location = "JFK"
 lga_wdir$Location = "LGA"
 nyc_wdir$Location = "NYC"
