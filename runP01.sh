@@ -92,5 +92,5 @@ ln -sf ${WRFTSDIR}/${wrfd2_doiY}/${wrfd2_doim}/${wrfd2_doid}/*.d03.TS ${WRFD2}/.
 #########################################################
 # Product 01
 #########################################################
-
-$RR -e "rmarkdown::render('cuerg_P01.Rmd')"
+rm "${yyyy_doi}-${mm_doi}-${dd_doi}_P01.html"
+$RR -e "rmarkdown::render(input = 'cuerg_P01.Rmd', output_format = 'html_document', output_file = '${yyyy_doi}-${mm_doi}-${dd_doi}_P01.html')"
