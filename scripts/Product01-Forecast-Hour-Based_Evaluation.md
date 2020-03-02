@@ -139,7 +139,7 @@ head(asos.df)
 
 ```{r Plot Image Locations}
 # Save the output plots
-knitr::opts_chunk$set(fig.path = paste0("./", fcst_start0 %>% str_replace(" 00:00:00", "")) , dev = "png")
+knitr::opts_chunk$set(fig.path = paste0("./", fcst_start0 %>% str_replace(" 00:00:00", ""), "/") , dev = "png")
 
 ```
 
@@ -439,7 +439,7 @@ stargazer::stargazer(eeval_wdir$eeval_table, type = 'html', summary = FALSE, col
 # uWRF and ASOS Time-Series Visualization
 ## Temperature  
 
-```{r All GG Temperatures, echo = FALSE, fig.align = "center"}
+```{r All_Locations_Temperature, echo = FALSE, fig.align = "center"}
 # theme_set(theme_pubr())
 jfk_temp$Location = "JFK"
 lga_temp$Location = "LGA"
@@ -454,7 +454,7 @@ ggplot(ggtemp, aes(x = Date.Time, y = Temperature, color = Source)) +
   
 ## Wind Speed  
 
-```{r All_Locations_Wind_Speeds.png, echo = FALSE, fig.align = "center"}
+```{r All_Locations_Wind_Speed, echo = FALSE, fig.align = "center"}
 jfk_wspd$Location = "JFK"
 lga_wspd$Location = "LGA"
 nyc_wspd$Location = "NYC"
