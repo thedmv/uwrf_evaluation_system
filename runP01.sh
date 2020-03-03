@@ -30,10 +30,10 @@ dd_doi="`date -d "yesterday" '+%d'`"
 full_doi="`date -d "yesterday" '+%Y-%m-%d'` 00:00:00"
 
 # Date of Interest (doi) (Testing and Debugging)
-yyyy_doi="2020"
-mm_doi="01"
-dd_doi="02"
-full_doi="${yyyy_doi}-${mm_doi}-${dd_doi} 00:00:00"
+#yyyy_doi="2020"
+#mm_doi="01"
+#dd_doi="02"
+#full_doi="${yyyy_doi}-${mm_doi}-${dd_doi} 00:00:00"
 
 #######################################################
 # Sed Changes
@@ -73,6 +73,11 @@ mv *.txt ${ASOS}/.
 ########################################################
 # Get WRF Data
 ########################################################
+
+# Remove previously used WRF data
+rm ${WRFD0}/*.TS
+rm ${WRFD1}/*.TS
+rm ${WRFD2}/*.TS
 
 # WRF data for the forecast initialized the same day as the date of interest
 ln -sf ${WRFTSDIR}/${yyyy_doi}/${mm_doi}/${dd_doi}/*.d03.TS ${WRFD0}/.
