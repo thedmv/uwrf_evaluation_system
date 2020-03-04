@@ -24,7 +24,7 @@ table, td, th {
 
 In this document I will explore how to create the first part of the evaluation system I proposed. The working title of this is the "Forecast-Hour Evaluation." The idea here is that we are looking at the performance of the model by looking at how it performed with different start times (using the most recent 00-hr forecast as input).  
 
-```{r Initialization}
+```{r Initialization, echo = FALSE}
 rm(list = ls())
 # Libraries to be used are loaded.
 source("./scripts/call_libraries.R")
@@ -44,7 +44,7 @@ source("./scripts/evalsys_functions.R")
 
 For this evaluation system we need to look at three different output folders. Here we use the folders named, `forecast_day_minus_0`, `forecast_day_minus_1`, `forecast_day_minus_2`. The contents of each of these folders will be similar: wrfout files for 86 forecast hours and time-series data for different locations of interest. Here we will first read the forecast data.  
 
-```{r Read WRF Data}
+```{r Read WRF Data, echo = FALSE}
 # Set the forecast start times for each time-series output
 #fcst_start0 = "2020-01-02 00:00:00"
 fcst_start0 = "CHANGE_DATE_HERE"
@@ -87,7 +87,7 @@ wrfd2.df = rbind(tsjfkd2, tslgad2, tsnycd2)
 
 Now we will read the observation data from the ASOS stations. The script that downloads the data is in `./obs_station_day_minus_0/dl_ny_asos.py`. The lines for the dates to download need to be changed before running it. Once the files are download, the lines below reads the data and adds column names.  
 
-```{r Read OBS data}
+```{r Read OBS data, echo = FALSE}
 # Read the ASOS data for each station
 asosdates = data.frame(begin = paste0(as.character(ymd_hms(fcst_start0) - days(1), format = "%Y%m%d"), "0000"),
                        end   = paste0(as.character(ymd_hms(fcst_start0) + days(1), format = "%Y%m%d"), "0000") )
@@ -109,7 +109,7 @@ asos.df = asos.df %>% dateTimeCol()
 
 Model and observation data do not share the same units for the same variable. For temperature, WRF is in Kelvin and ASOS is in degreesF. For winds, WRF is in m/s and ASOS is in knots. The formulas used to convert the numbers to a common system is shown here. For temperature I will use Kelvin, and m/s for wind speeds.
 
-```{r Unit Conversion}
+```{r Unit Conversion, echo = FALSE}
 # WRF Temperature conversions
 # wrfd0.df$Temperature = wrfd0.df$Temperature - 273.15
 # wrfd1.df$Temperature = wrfd1.df$Temperature - 273.15
@@ -126,7 +126,7 @@ asos.df$Wind.Speed = asos.df$Wind.Speed/1.944
 
 Now we have one data frame for all the observations, and three (3) data frames of the WRF data (one data frame per forecast init time). The lines below provide a visual of the data frames.
 
-```{r Combined DFs}
+```{r Combined DFs, echo = FALSE}
 # WRF Data
 head(wrfd0.df)
 head(wrfd1.df)
@@ -137,7 +137,7 @@ head(asos.df)
 ```
 ## Locations for Plots
 
-```{r Plot Image Locations}
+```{r Plot Image Locations, echo = FALSE}
 # Save the output plots
 knitr::opts_chunk$set(fig.path = paste0("./", fcst_start0 %>% str_replace(" 00:00:00", ""), "/") , dev = "png")
 
@@ -151,7 +151,7 @@ Time-matching is performed using a routine that can be found in `Analysis01-Time
 
 Note that for this product the "day of interest" will always be the UTC date of the day before.
 
-```{r Filter for Day of Interest}
+```{r Filter for Day of Interest, echo = FALSE}
 # Select a day of interest
 doi = data.frame(Date.Time = as.POSIXct(fcst_start0, tz = "UTC")) %>% dateTimeCol()
 
@@ -171,7 +171,7 @@ Next, we will select only the temperature data for comparing the model and obser
 ## Temperature Time-Matching  
 
 ### Location: JFK  
-```{r Temperature Time Matching - JFK}
+```{r Temperature Time Matching - JFK, echo = FALSE}
 mystation = "JFK"
 # Observational data used to probe WRF date-times.
 asos.df_doi_jfk = asos.df_doi %>% filter(Station == mystation) %>% select(Date.Time, Temperature) %>% drop_na() %>% mutate(Source = "ASOS")
@@ -192,7 +192,7 @@ jfk_temp = rbind(asos.df_doi_jfk, wrfd0.df_doi_jfk_match, wrfd1.df_doi_jfk_match
 
 ### Location: LGA
 
-```{r Temperature Time Matching - LGA}
+```{r Temperature Time Matching - LGA, echo = FALSE}
 mystation = "LGA"
 # Observational data used to probe WRF date-times.
 asos.df_doi_lga = asos.df_doi %>% filter(Station == mystation) %>% select(Date.Time, Temperature) %>% drop_na() %>% mutate(Source = "ASOS")
@@ -213,7 +213,7 @@ lga_temp = rbind(asos.df_doi_lga, wrfd0.df_doi_lga_match, wrfd1.df_doi_lga_match
 
 ### Location: NYC
 
-```{r Temperature Time Matching - NYC}
+```{r Temperature Time Matching - NYC, echo = FALSE}
 mystation = "NYC"
 # Observational data used to probe WRF date-times.
 asos.df_doi_nyc = asos.df_doi %>% filter(Station == mystation) %>% select(Date.Time, Temperature) %>% drop_na() %>% mutate(Source = "ASOS")
@@ -236,7 +236,7 @@ nyc_temp = rbind(asos.df_doi_nyc, wrfd0.df_doi_nyc_match, wrfd1.df_doi_nyc_match
 
 ### Location: JFK
 
-```{r Wind Speed Time Matching - JFK}
+```{r Wind Speed Time Matching - JFK, echo = FALSE}
 mystation = "JFK"
 # Observational data used to probe WRF date-times.
 asos.df_doi_jfk = asos.df_doi %>% filter(Station == mystation) %>% select(Date.Time, Wind.Speed) %>% drop_na() %>% mutate(Source = "ASOS")
@@ -257,7 +257,7 @@ jfk_wspd = rbind(asos.df_doi_jfk, wrfd0.df_doi_jfk_match, wrfd1.df_doi_jfk_match
 
 ### Location: LGA
 
-```{r Wind Speed Time Matching - LGA}
+```{r Wind Speed Time Matching - LGA, echo = FALSE}
 mystation = "LGA"
 # Observational data used to probe WRF date-times.
 asos.df_doi_lga = asos.df_doi %>% filter(Station == mystation) %>% select(Date.Time, Wind.Speed) %>% drop_na() %>% mutate(Source = "ASOS")
@@ -278,7 +278,7 @@ lga_wspd = rbind(asos.df_doi_lga, wrfd0.df_doi_lga_match, wrfd1.df_doi_lga_match
 
 ### Location: NYC
 
-```{r Wind Speed Time Matching - NYC}
+```{r Wind Speed Time Matching - NYC, echo = FALSE}
 mystation = "NYC"
 # Observational data used to probe WRF date-times.
 asos.df_doi_nyc = asos.df_doi %>% filter(Station == mystation) %>% select(Date.Time, Wind.Speed) %>% drop_na() %>% mutate(Source = "ASOS")
@@ -301,7 +301,7 @@ nyc_wspd = rbind(asos.df_doi_nyc, wrfd0.df_doi_nyc_match, wrfd1.df_doi_nyc_match
 
 ### Location: JFK
 
-```{r Wind Direction Time Matching - JFK}
+```{r Wind Direction Time Matching - JFK, echo = FALSE}
 mystation = "JFK"
 # Observational data used to probe WRF date-times.
 asos.df_doi_jfk = asos.df_doi %>% filter(Station == mystation) %>% select(Date.Time, Wind.Direction) %>% drop_na() %>% mutate(Source = "ASOS")
@@ -322,7 +322,7 @@ jfk_wdir = rbind(asos.df_doi_jfk, wrfd0.df_doi_jfk_match, wrfd1.df_doi_jfk_match
 
 ### Location: LGA  
 
-```{r Wind Direction Time Matching - LGA}
+```{r Wind Direction Time Matching - LGA, echo = FALSE}
 mystation = "LGA"
 # Observational data used to probe WRF date-times.
 asos.df_doi_lga = asos.df_doi %>% filter(Station == mystation) %>% select(Date.Time, Wind.Direction) %>% drop_na() %>% mutate(Source = "ASOS")
@@ -343,7 +343,7 @@ lga_wdir = rbind(asos.df_doi_lga, wrfd0.df_doi_lga_match, wrfd1.df_doi_lga_match
 
 ### Location: NYC
 
-```{r Wind Direction Time Matching - NYC}
+```{r Wind Direction Time Matching - NYC, echo = FALSE}
 mystation = "NYC"
 # Observational data used to probe WRF date-times.
 asos.df_doi_nyc = asos.df_doi %>% filter(Station == mystation) %>% select(Date.Time, Wind.Direction) %>% drop_na() %>% mutate(Source = "ASOS")
@@ -366,7 +366,7 @@ nyc_wdir = rbind(asos.df_doi_nyc, wrfd0.df_doi_nyc_match, wrfd1.df_doi_nyc_match
 
 For the temperature data I will use Bias, RMSE and MAE for the comparison statistics
 
-```{r JFK Eval Stats, echo = FALSE}
+```{r JFK Eval Stats, echo = FALSE, echo = FALSE}
 eeval_temp = evalsys_temp(jfk_temp)
 eeval_wspd = evalsys_wspd(jfk_wspd)
 eeval_wdir = evalsys_wdir(jfk_wdir)

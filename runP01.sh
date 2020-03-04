@@ -98,8 +98,14 @@ ln -sf ${WRFTSDIR}/${wrfd2_doiY}/${wrfd2_doim}/${wrfd2_doid}/*.d03.TS ${WRFD2}/.
 # Product 01
 #########################################################
 rm "${yyyy_doi}-${mm_doi}-${dd_doi}_P01.html"
+rm ./${yyyy_doi}-${mm_doi}-${dd_doi}/*_P01.html
 $RR -e "rmarkdown::render(input = 'cuerg_P01.Rmd', output_format = 'html_document', output_file = '${yyyy_doi}-${mm_doi}-${dd_doi}_P01.html')"
 
 # Move the CSV files into the same folder as the plots
 rm ./${yyyy_doi}-${mm_doi}-${dd_doi}/*.csv
 mv *.csv ./${yyyy_doi}-${mm_doi}-${dd_doi}/.
+
+# Move the html output into the directory of the date of interest.
+mv ${yyyy_doi}-${mm_doi}-${dd_doi}_P01.html ./${yyyy_doi}-${mm_doi}-${dd_doi}/.
+
+echo "Product P01 done for ${yyyy_doi}-${mm_doi}-${dd_doi} and saved to ${HOMEEVAL}/${yyyy_doi}-${mm_doi}-${dd_doi}/"
