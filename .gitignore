@@ -6,7 +6,7 @@
 
 # Data Files
 #######################
-forecast_day_minus_*_cuerg/*.TS
+forecast_day_minus_[012]_cuerg/*.TS
 obs_station_day_minus_0/*.txt
 
 # Intermediate and Output Files
