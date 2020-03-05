@@ -68,9 +68,9 @@ timeavg.ts = function(tsdata, agg.time = "1 hour", statistic = "mean") {
     varnames = names(tsdata)[names(tsdata) %w/o% timenames]
     
     # 3. Calculate the time average
-    tsdata = timeAverage(tsdata %>% select(date, varnames), avg.time = agg.time, statistic =  statistic)
+    tsdata = timeAverage(tsdata %>% select(date, all_of(varnames)), avg.time = agg.time, statistic =  statistic)
     names(tsdata)[names(tsdata) == "date"] = "Date.Time"
-    tsdata = tsdata %>% dateTimeCol() %>% select(Date.Time, year:sec, varnames)
+    tsdata = tsdata %>% dateTimeCol() %>% select(Date.Time, year:sec, all_of(varnames))
     
     return(tsdata)
 }
@@ -94,7 +94,7 @@ read.asos = function(fASOS) {
     
     # Pick columns of interest
     select_columns = c("station", "valid", "tmpf", "relh", "drct", "sknt")
-    asos.df = asos.df %>% select(select_columns)
+    asos.df = asos.df %>% select(all_of(select_columns))
     
     # Replace M with NaN
     asos.df[asos.df == "M"] = NaN
