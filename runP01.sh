@@ -31,8 +31,8 @@ full_doi="`date -d "yesterday" '+%Y-%m-%d'` 00:00:00"
 
 # Date of Interest (doi) (Testing and Debugging)
 #yyyy_doi="2020"
-#mm_doi="01"
-#dd_doi="02"
+#mm_doi="03"
+#dd_doi="10"
 #full_doi="${yyyy_doi}-${mm_doi}-${dd_doi} 00:00:00"
 
 #######################################################
