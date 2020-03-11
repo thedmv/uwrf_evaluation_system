@@ -46,11 +46,11 @@ cd ${HOMEEVAL}
 rm cuerg_asos.py
 sed -e '{
        s;YEARSTART;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 1 day" '+%Y'`';
-       s;MONSTART;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 1 day" '+%m'`';
-       s;DAYSTART;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 1 day" '+%d'`';
+       s;MONSTART;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 1 day" '+%-m'`';
+       s;DAYSTART;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} - 1 day" '+%-d'`';
        s;YEAREND;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} + 1 day" '+%Y'`';
-       s;MONEND;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} + 1 day" '+%m'`';
-       s;DAYEND;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} + 1 day" '+%d'`';
+       s;MONEND;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} + 1 day" '+%-m'`';
+       s;DAYEND;'`date -d "${yyyy_doi}-${mm_doi}-${dd_doi} + 1 day" '+%-d'`';
        }'  ${ASOS}/dl_ny_asos.py > ./cuerg_asos.py
 
 # Changes in Product01 file
