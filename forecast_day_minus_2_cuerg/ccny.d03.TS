@@ -1,1 +1,0 @@
-/data/CUERG_PROJECTS/New_York_Forecast/output_prev/2019/12/31/ccny.d03.TS

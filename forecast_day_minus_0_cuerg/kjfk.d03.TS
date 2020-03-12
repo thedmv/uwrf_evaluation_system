@@ -1,1 +1,0 @@
-/data/CUERG_PROJECTS/New_York_Forecast/output_prev/2020/01/02/kjfk.d03.TS

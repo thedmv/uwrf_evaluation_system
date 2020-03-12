@@ -1,1 +1,0 @@
-/data/CUERG_PROJECTS/New_York_Forecast/output_prev/2019/12/31/klga.d03.TS
