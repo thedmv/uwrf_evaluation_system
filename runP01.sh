@@ -9,7 +9,8 @@ export WRFD0=${HOMEEVAL}/forecast_day_minus_0_cuerg
 export WRFD1=${HOMEEVAL}/forecast_day_minus_1_cuerg
 export WRFD2=${HOMEEVAL}/forecast_day_minus_2_cuerg
 export SCRIPTS=${HOMEEVAL}/scripts
-export PYTHON=${HOME}/miniconda2/bin/python
+#export PYTHON=${HOME}/miniconda2/bin/python
+export PYTHON3=${HOME}/miniconda3/bin/python
 export RR=/usr/bin/Rscript
 export WRFTSDIR=/data/CUERG_PROJECTS/New_York_Forecast/output_prev
 source ${HOME}/.bashrc
@@ -66,7 +67,7 @@ sed -e "{
 # Run the python script for downloading ASOS data
 rm mystations
 ln -sf $ASOS/mystations .
-$PYTHON cuerg_asos.py
+$PYTHON3 cuerg_asos.py
 
 # The ASOS data file names all have a .txt suffix
 mv *.txt ${ASOS}/.
