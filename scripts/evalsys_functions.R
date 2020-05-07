@@ -25,6 +25,34 @@ read.wrf_tslistTS = function(tsfilename, fcst_hr0) {
     return(tsdata)
 }
 
+read.wrf_tslistTSfull = function(tsfilename, fcst_hr0) {
+    # This function reads TS files created from the tslist runtime configurations. 
+    # Only works for the files in which the extension *.TS. First seen in `Load01-WRF_tslist.Rmd.`
+    #
+    # Update 2020-05-07: 
+    #   This is similar to read.wrf_tslistTS, but it outputs all the variable columns, instead
+    #   of just t, q, u, and v.
+    # INPUT
+    # tsfilename  --  string of the file name; 
+    # fcst_hr0    --  string of the first forecast hour; for example: "2018-06-30 18:00:00"
+    # OUTPUT
+    # tsdata  -- data frame of the tslist; only columns of date and time, temperature, and winds (u, v, wspd, wdir)
+    
+    # Read the WRF tslist file 
+    tsdata = read.table(tsfilename, skip = 1, stringsAsFactors = FALSE)
+    
+    # Add the column names for the  Time series (TS) output of surface variables
+    names(tsdata) = c("id", "ts_hour", "id_tsloc", "ix", "iy", "t", "q", "u", "v", "psfc", "glw", "gsw", "hfx", "lh", "tsk", "tslb_1", "rainc", "rainnc", "clw")
+    
+    # Set the start of the forecast hour
+    tsdata$Date.Time = as.POSIXct(fcst_hr0, tz = "UTC") + tsdata$ts_hour * 3600
+    
+    # Here we add columns for the date and times so that the wspd/wdir finctuon can work
+    tsdata = tsdata %>% dateTimeCol() %>% select(Date.Time, year:sec, t:clw)
+    
+    return(tsdata)
+}
+
 ts_wswd = function(tsdata) {
     # This function returns the wind speed and wind directions given u and v components.
     # INPUT
