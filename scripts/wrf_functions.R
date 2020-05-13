@@ -39,7 +39,8 @@ wrfvarinterp <- function(wrfvar, heights.out) {
     wrfvar.interp = as.data.frame(do.call(rbind, wrfvar.interp))
     heights.out.names = paste0("X", heights.out)
     names(wrfvar.interp) = heights.out.names
-    wrfvar.interp = cbind(wrfvar.interp, select(wrfvar, Date.Time:sec)) %>% select(Date.Time:sec, heights.out.names)
+    wrfvar.interp = cbind(wrfvar.interp, select(wrfvar, Date.Time:sec)) %>% select(Date.Time:sec, all_of(heights.out.names))
+    return(wrfvar.interp)
 }
 
 wrf2df_qmix <- function(file_q, file_znu, poi, tz) {
