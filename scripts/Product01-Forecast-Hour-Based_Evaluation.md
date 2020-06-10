@@ -428,7 +428,7 @@ stargazer::stargazer(eeval_wdir$eeval_table, type = 'html', summary = FALSE, col
 
 # Forecast Hour Evaluation for NYC
 
-```{r Temp Eval Stats nyc, echo = FALSE}
+```{r NYC Eval Stats, echo = FALSE}
 eeval_temp = evalsys_temp(nyc_temp)
 eeval_wspd = evalsys_wspd(nyc_wspd)
 eeval_wdir = evalsys_wdir(nyc_wdir)
