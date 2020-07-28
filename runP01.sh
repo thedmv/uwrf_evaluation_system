@@ -110,3 +110,9 @@ mv *.csv ./${yyyy_doi}-${mm_doi}-${dd_doi}/.
 mv ${yyyy_doi}-${mm_doi}-${dd_doi}_P01.html ./${yyyy_doi}-${mm_doi}-${dd_doi}/.
 
 echo "Product P01 done for ${yyyy_doi}-${mm_doi}-${dd_doi} and saved to ${HOMEEVAL}/${yyyy_doi}-${mm_doi}-${dd_doi}/"
+
+#7-24-2020, Jibsen: Creates soft link to be able and ready to list on the website https://cuerg.ccny.cuny.edu/forecast/ws/wrfn/uwrf_evaluation/
+rm -f /var/www/html/cuerg_html/forecast/ws/wrfn/uwrf_evaluation/${yyyy_doi}-${mm_doi}-${dd_doi}_P01.html
+
+ln -s $HOMEEVAL/${yyyy_doi}-${mm_doi}-${dd_doi}/${yyyy_doi}-${mm_doi}-${dd_doi}_P01.html /var/www/html/cuerg_html/forecast/ws/wrfn/uwrf_evaluation/${yyyy_doi}-${mm_doi}-${dd_doi}_P01.html
+
