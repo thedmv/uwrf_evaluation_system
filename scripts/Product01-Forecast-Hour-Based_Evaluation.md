@@ -468,7 +468,7 @@ nyc_temp$Location = "NYC"
 ggtemp = rbind(jfk_temp, lga_temp, nyc_temp)
 
 ggplot(ggtemp, aes(x = Date.Time, y = Temperature, color = Source)) + 
-       geom_point() + geom_line() + ylim(270, 290) +
+       geom_point() + geom_line() + ylim(290, 320) +
        xlab("Time of Day") + ylab("Temperature (K)") + ggtitle("Forecast-Hour Evaluation: Temperature") + 
        facet_grid(Location ~ .) + theme(legend.position = "top") + scale_color_discrete(name = "")
 ```
