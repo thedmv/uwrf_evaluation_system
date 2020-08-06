@@ -169,9 +169,8 @@ asos.df_doi = asos.df %>% filter(year == doi$year) %>% filter(mon == doi$mon) %>
 # Next, we will select only the temperature data for comparing the model and observations. This needs to be done on a per station basis. Note that we use the function `drop_na()` to drop rows which contain NaN or NA data. Since each variable is measured at different intervals, not all variables will have data available at every time step in the ASOS data. The functions may be too sensitive to missing data and thus we take care to remvove it here from the observations, after we have isolated a particular variable.
 
 ## Temperature Time-Matching  
-
 ```
-### Location: JFK  
+
 ```{r Temperature Time Matching - JFK, echo = FALSE}
 mystation = "JFK"
 # Observational data used to probe WRF date-times.
@@ -191,7 +190,6 @@ wrfd2.df_doi_jfk_match = nearest.dataframe(asos.df_doi_jfk, wrfd2.df_doi_jfk, fc
 jfk_temp = rbind(asos.df_doi_jfk, wrfd0.df_doi_jfk_match, wrfd1.df_doi_jfk_match, wrfd2.df_doi_jfk_match)
 ```
 
-### Location: LGA
 
 ```{r Temperature Time Matching - LGA, echo = FALSE}
 mystation = "LGA"
@@ -235,8 +233,6 @@ nyc_temp = rbind(asos.df_doi_nyc, wrfd0.df_doi_nyc_match, wrfd1.df_doi_nyc_match
 
 ```{r Wind Speed Time Matching - JFK, echo = FALSE}
 ## Wind Speed Time-Matching  
-
-### Location: JFK
 
 mystation = "JFK"
 # Observational data used to probe WRF date-times.
