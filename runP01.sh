@@ -28,12 +28,13 @@ rm ${ASOS}/NYC*.txt
 yyyy_doi="`date -d "yesterday" '+%Y'`"
 mm_doi="`date -d "yesterday" '+%m'`"
 dd_doi="`date -d "yesterday" '+%d'`"
-#full_doi="`date -d "yesterday" '+%Y-%m-%d'` 00:00:00"
 
 # Date of Interest (doi) (Testing and Debugging)
 #yyyy_doi="2020"
-#mm_doi="07"
-#dd_doi="07"
+#mm_doi="08"
+#dd_doi="02"
+
+# Combine date of interest pieces
 full_doi="${yyyy_doi}-${mm_doi}-${dd_doi} 00:00:00"
 
 #######################################################

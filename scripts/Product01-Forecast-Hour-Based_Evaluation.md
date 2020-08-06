@@ -233,7 +233,7 @@ wrfd2.df_doi_nyc_match = nearest.dataframe(asos.df_doi_nyc, wrfd2.df_doi_nyc, fc
 nyc_temp = rbind(asos.df_doi_nyc, wrfd0.df_doi_nyc_match, wrfd1.df_doi_nyc_match, wrfd2.df_doi_nyc_match)
 ```
 
-``{r Wind Speed Time Matching - JFK, echo = FALSE}
+```{r Wind Speed Time Matching - JFK, echo = FALSE}
 ## Wind Speed Time-Matching  
 
 ### Location: JFK
