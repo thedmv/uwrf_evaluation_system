@@ -210,7 +210,6 @@ wrfd2.df_doi_lga_match = nearest.dataframe(asos.df_doi_lga, wrfd2.df_doi_lga, fc
 lga_temp = rbind(asos.df_doi_lga, wrfd0.df_doi_lga_match, wrfd1.df_doi_lga_match, wrfd2.df_doi_lga_match)
 ```
 
-### Location: NYC
 
 ```{r Temperature Time Matching - NYC, echo = FALSE}
 mystation = "NYC"
@@ -453,8 +452,8 @@ stargazer::stargazer(eeval_wspd$eeval_table, type = 'html', summary = FALSE, col
 stargazer::stargazer(eeval_wdir$eeval_table, type = 'html', summary = FALSE, column.sep.width = "100pt", title = "NYC - WRF 10-m Wind Direction (degN) Performance")
 ```
 
-# uWRF and ASOS Time-Series Visualization
-## Temperature  
+# Time-Series
+## Temperature (K)  
 
 ```{r All_Locations_Temperature, echo = FALSE, fig.align = "center"}
 # theme_set(theme_pubr())
@@ -469,7 +468,7 @@ ggplot(ggtemp, aes(x = Date.Time, y = Temperature, color = Source)) +
        facet_grid(Location ~ .) + theme(legend.position = "top") + scale_color_discrete(name = "")
 ```
   
-## Wind Speed  
+## Wind Speed (m/s)
 
 ```{r All_Locations_Wind_Speed, echo = FALSE, fig.align = "center"}
 jfk_wspd$Location = "JFK"
@@ -483,7 +482,7 @@ ggplot(ggwspd, aes(x = Date.Time, y = Wind.Speed, color = Source)) +
        facet_grid(Location ~ .) + theme(legend.position = "top") + scale_color_discrete(name = "")
 ```
   
-## Wind Direction  
+## Wind Direction (degN)
 
 ```{r All_Locations_Wind_Direction, echo = FALSE, fig.align = "center"}
 jfk_wdir$Location = "JFK"
